@@ -1,0 +1,2 @@
+with open("custom-binary-le.bin", "wb") as f:
+    f.write(bytes.fromhex("FFFE 64000000 416C69636500 55000000 426F6200 78000000 436861726C696500 F6FFFFFF 5A6FC3AB00".replace(" ", "")))
