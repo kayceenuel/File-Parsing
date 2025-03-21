@@ -1,6 +1,6 @@
 [
-    {"name": "Lamar", "high_score": 10}
-    {"name": "kaycee", "high_score": 30}
-    {"name": "Ada_love", "high_score": -1}
-    {"name": "Margot", "high_score": 25}
+    {"name": "Alice", "high_score": 100}, 
+    {"name": "Bob", "high_score": 85}, 
+    {"name": "Charlie", "high_score": 120}, 
+    {"name": "Zoe", "high_score": -10}
 ]
