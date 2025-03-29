@@ -43,3 +43,18 @@ func (p *parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
 
 	return records, nil
 }
+
+func parseByteOrder(r io.Reader) (binary.ByteOrder, error) {
+	buf := make([]byte, 2)
+	_, err := io.ReadFull(r, buf)
+	if err != nil {
+		return nil, err
+	}
+	if buf[0] == '\xFE' && buf[1] == '\xFF' {
+		return binary.BigEndian, nil
+	} else if buf[0] == '\xFF' && buf[1] == '\xFE' {
+		return binary.LittleEndian, nil
+	} else {
+		return nil, fmt.Errorf("didn't recognise byte-order mark")
+	}
+}
