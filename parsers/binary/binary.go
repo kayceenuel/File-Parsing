@@ -5,21 +5,16 @@ import (
 	"encoding/binary"
 	"fmt"
 	"io"
-	"io/ioutil"
-)
 
-// Parser interface (assumed from a parsers package)
-type PlayersRecord struct {
-	Name      string
-	HighScore int
-}
+	"github.com/file-parsing/parsers"
+)
 
 type parser struct{}
 
 // Parse reads binary data from the provided reader and returns a slice of PlayersRecord.
-func (p *parser) Parse(r io.Reader) ([]PlayersRecord, error) {
+func (p *parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
 	// Read all data from the reader into a byte slice
-	data, err := ioutil.ReadAll(r)
+	data, err := io.ReadAll(r)
 	if err != nil {
 		return nil, fmt.Errorf("failed to read data: %v", err)
 	}
@@ -44,7 +39,7 @@ func (p *parser) Parse(r io.Reader) ([]PlayersRecord, error) {
 	data = data[2:]
 
 	// Slice to store parsed records
-	var records []PlayersRecord
+	var records []parsers.PlayersRecord
 
 	// Process records until no data remains
 	for len(data) > 0 {
@@ -69,7 +64,7 @@ func (p *parser) Parse(r io.Reader) ([]PlayersRecord, error) {
 		data = data[nullIndex+1:]
 
 		// Add the record to the slice
-		records = append(records, PlayersRecord{
+		records = append(records, parsers.PlayersRecord{
 			Name:      name,
 			HighScore: int(score),
 		})
