@@ -9,9 +9,9 @@ import (
 	"github.com/file-parsing/parsers"
 )
 
-type parser struct{}
+type Parser struct{}
 
-func (p *parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
+func (p *Parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
 	var records []parsers.PlayersRecord
 	scanner := bufio.NewScanner(r)
 	for scanner.Scan() {
