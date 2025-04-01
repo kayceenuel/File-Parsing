@@ -7,9 +7,9 @@ import (
 	"github.com/file-parsing/parsers"
 )
 
-type parser struct{}
+type Parser struct{}
 
-func (p *parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
+func (p *Parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
 	var records []parsers.PlayersRecord
 	if err := json.NewDecoder(r).Decode(&records); err != nil {
 		return nil, err
