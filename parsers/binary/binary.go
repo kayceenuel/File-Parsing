@@ -9,10 +9,10 @@ import (
 	"github.com/file-parsing/parsers"
 )
 
-type parser struct{}
+type Parser struct{}
 
 // Parse reads binary data from the provided reader and returns a slice of PlayersRecord.
-func (p *parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
+func (p *Parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
 	// Read all data from the reader into a byte slice
 	data, err := io.ReadAll(r)
 	if err != nil {
