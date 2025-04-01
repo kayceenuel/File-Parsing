@@ -9,9 +9,9 @@ import (
 	"github.com/file-parsing/parsers"
 )
 
-type parser struct{}
+type Parser struct{}
 
-func (p *parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
+func (p *Parser) Parse(r io.Reader) ([]parsers.PlayersRecord, error) {
 	// Create a new CSV reader
 	csvReader := csv.NewReader(r)
 
